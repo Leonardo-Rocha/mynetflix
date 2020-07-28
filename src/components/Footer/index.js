@@ -12,8 +12,8 @@ function Footer() {
       </a>
       <p>
         Orgulhosamente criado durante a{' '}
-        <a href="https://www.alura.com.br/">Imersão React da Alura</a>
-        por LEOZIM BRABO DEMAIS.
+        <a href="https://www.alura.com.br/">Imersão React da Alura</a> por
+        Leonardo Rocha.
       </p>
     </FooterBase>
   );
