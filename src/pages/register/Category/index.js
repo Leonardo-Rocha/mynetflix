@@ -23,7 +23,9 @@ function RegisterCategory() {
 
   useEffect(() => {
     async function fetchData() {
-      const URL = 'http://localhost:8080/categorias';
+      const URL = window.location.hostname.includes('localhost')
+        ? 'http://localhost:8080/categorias'
+        : 'https://mynetflix-backend.herokuapp.com/categorias';
       const response = await fetch(URL);
       const data = await response.json();
       setCategories([
