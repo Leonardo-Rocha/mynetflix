@@ -18,7 +18,7 @@ function RegisterCategory() {
   }
 
   function handleFormInputChange(info) {
-    setValue(info.target.getAttribute('title'), info.target.value);
+    setValue(info.target.getAttribute('name'), info.target.value);
   }
 
   useEffect(() => {
