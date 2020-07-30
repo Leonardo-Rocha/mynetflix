@@ -10,11 +10,11 @@ import RegisterCategory from './pages/register/Category';
 ReactDOM.render(
   <BrowserRouter>
     <Switch>
-      <Route path="/" component={Home} exact />
-      <Route path="/cadastro/video" component={RegisterVideo} />
-      <Route path="/cadastro/categoria" component={RegisterCategory} />
+      <Route path='/' component={Home} exact />
+      <Route path='/cadastro/video' component={RegisterVideo} />
+      <Route path='/cadastro/categoria' component={RegisterCategory} />
       <Route component={Error404} />
     </Switch>
   </BrowserRouter>,
-  document.getElementById('root')
+  document.getElementById('root'),
 );
