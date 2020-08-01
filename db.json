@@ -1,5 +1,5 @@
 {
-  "categorias": [
+  "categories": [
     {
       "id": 1,
       "title": "Front End",
@@ -40,6 +40,12 @@
         "text": "Formação de Jogos na Alura",
         "url": "https://www.alura.com.br/cursos-online-front-end"
       }
+    },
+    {
+      "title": "Macaqueamento de fios sérios",
+      "description": "Categoria para macaquear no /b/",
+      "color": "#b74f4f",
+      "id": 6
     }
   ],
   "videos": [
@@ -186,6 +192,32 @@
       "categoryId": 5,
       "title": "Resident Evil 8",
       "url": "https://www.youtube.com/watch?v=JSapXD9vxYA"
+    },
+    {
+      "title": "Free to Play: The Movie (US)",
+      "url": "https://www.youtube.com/watch?v=UjZYMI1zB9s",
+      "categoryId": 4,
+      "description": "Dota 2 The International 1 Documentary",
+      "id": 25
+    },
+    {
+      "title": "aaaa",
+      "url": "aaaa",
+      "description": "aaaa",
+      "id": 26
+    },
+    {
+      "title": "",
+      "url": "",
+      "description": "",
+      "id": 27
+    },
+    {
+      "title": "Mostra a bunda eu meto o pau",
+      "url": "https://youtu.be/k0kuTmvPbWY",
+      "categoryId": 6,
+      "description": "Tudo fica bom no cabaré",
+      "id": 28
     }
   ]
 }

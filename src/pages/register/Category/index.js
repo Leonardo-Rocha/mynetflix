@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import PageDefault from '../../../components/PageDefault';
 import FormField from '../../../components/FormField';
 import Button from '../../../components/Button';
+import useForm from '../../../hooks/useForm';
+import categoriesRepository from '../../../repositories/categories';
 
 function RegisterCategory() {
   const initialValues = {
@@ -10,51 +12,50 @@ function RegisterCategory() {
     description: '',
     color: '#0000',
   };
-  const [values, setValues] = useState(initialValues);
+
+  const { values, handleFormInputChange } = useForm(initialValues);
   const [categories, setCategories] = useState([]);
-
-  function setValue(key, value) {
-    setValues({ ...values, [key]: value });
-  }
-
-  function handleFormInputChange(info) {
-    setValue(info.target.getAttribute('name'), info.target.value);
-  }
+  const history = useHistory();
 
   useEffect(() => {
-    async function fetchData() {
-      const URL = window.location.hostname.includes('localhost')
-        ? 'http://localhost:8080/categorias'
-        : 'https://mynetflix-backend.herokuapp.com/categorias';
-      const response = await fetch(URL);
-      const data = await response.json();
-      setCategories([
-        ...data,
-      ]);
-    }
-    fetchData();
+    categoriesRepository.getAll()
+      .then((allCategories) => {
+        setCategories(allCategories);
+      })
+      .catch((err) => {
+        // eslint-disable-next-line no-console
+        console.log(err.message);
+      });
   }, []);
 
   return (
     <PageDefault>
-      <h1>Cadastro de Categoria</h1>
+      <h1>Nova Categoria</h1>
 
       <form
         onSubmit={function handleSubmit(eventInfo) {
           eventInfo.preventDefault();
           setCategories([...categories, values]);
-          setValues(initialValues);
+
+          categoriesRepository.create({
+            title: values.title,
+            description: values.description,
+            color: values.color,
+          })
+            .then(() => {
+              history.push('/');
+            });
         }}
       >
         <FormField
-          label='Nome da categoria: '
+          label='Título'
           name='title'
           value={values.title}
           onChange={handleFormInputChange}
         />
 
         <FormField
-          label='Descrição: '
+          label='Descrição'
           type='textarea'
           name='description'
           value={values.description}
@@ -62,7 +63,7 @@ function RegisterCategory() {
         />
 
         <FormField
-          label='Cor: '
+          label='Cor'
           type='color'
           name='color'
           value={values.color}
